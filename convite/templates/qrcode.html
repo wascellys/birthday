@@ -28,13 +28,58 @@
 
 </head>
 <body>
+<style>
+
+
+.control {
+    position: relative;
+      width: 400px;
+      height: 550px;
+      overflow: hidden;
+}
+.control img {
+  position: absolute;
+  top: 0;
+  left: 0;
+   //border-style: solid;
+  color:pink;
+}
+.superior {
+    width: 40%;
+    color: black;
+    padding: 100px;
+    position: relative;
+    //margin-left: auto;
+    margin-right: auto;
+    margin-top: 170px;
+    height: 500px;
+}
+.name {
+    margin-top:50px;
+}
+</style>
+
 
 <div class="row">
     {% for p in pessoas %}
-    <div class="col-3">
-        {{p.pessoa}}<br>
-        <img src="{{p.qrcode}}" style="width:200px;">
+    <div class="col-6 col-md-3">
+        <div class="control">
+            <img src="/static/img/folha.png" style="width:400px;">
+            <div class="superior">
+                <div class="row">
+                    <div class="col-12 col-md-12">
+                        <img src="{{p.qrcode}}" style="width:130px; margin-left:133px; margin-right:auto;">
+                    </div>
+                    <div class="col-12 col-md-12">
+                         <div id="name-title" style="font-size:18px; margin-top:40px; margin-right:20px; color:white;
+                         text-align: center; width: 160px;"> {{p.pessoa}}</div>
+                    </div>
+                </div>
 
+            </div>
+
+
+        </div>
     </div>
     {% endfor %}
 </div>
