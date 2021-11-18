@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-982ize01ncr+d7@rlbq4@_v9)w2@*f5=r@vg!y%ese47zdycjx'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -121,7 +121,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = '/home/ced/ponto2/ponto2/static/'
+# STATIC_ROOT = '/home/edywascellys/edywascellys.pythonanywhere.com/static/'
 MEDIA_URL = '/media/'
 
 if DEBUG:
