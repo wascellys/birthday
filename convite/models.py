@@ -5,6 +5,8 @@ from django.db import models
 from django.db import models
 from django.utils.crypto import get_random_string
 # Create your models here.
+from eventos import settings
+
 
 def create_if_hash():
     return get_random_string(10)
@@ -45,14 +47,18 @@ class Convite(models.Model):
         )
 
         codigo = self.codigo
+
+        # data = 'http://' + ip + ":8000/convite/"+codigo
+
         data = 'https://edywascellys.pythonanywhere.com/convite/'+codigo
 
 
         qr.add_data(data)
         qr.make(fit=True)
-        img = qr.make_image(fill='black', back_color='white')
+        img = qr.make_image(fill_color='white', back_color='#5FBF00')
         img.save('/home/edywascellys/edywascellys.pythonanywhere.com/static/img/'+codigo+'.png')
 
+        # img.save('../birthday/convite/static/img/' + codigo + '.png')
         imagem = '/static/img/'+codigo+'.png'
 
         return imagem

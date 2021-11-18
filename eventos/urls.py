@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
 
-from convite.views import convite, confirmar_presenca, eventos, convidados
+from convite.views import convite, confirmar_presenca, eventos, convidados,gerar_qrcode
 from eventos import settings
 
 urlpatterns = [
@@ -25,6 +25,7 @@ urlpatterns = [
     path('convite/<str:codigo>', convite, name="convite"),
     path('confirmar-presenca/<str:codigo>', confirmar_presenca, name="confirmar-presenca"),
     path('convidados/<str:codigo>', convidados, name="confirmar-presenca"),
+    path('gerar_qrcode/<str:codigo>', gerar_qrcode, name="gerar_qrcode"),
     path('', eventos, name="eventos"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

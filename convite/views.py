@@ -32,3 +32,6 @@ def eventos(request):
     eventos = Evento.objects.all().order_by('nome')
     return render(request, 'convite/eventos.html', {'eventos': eventos})
 
+def gerar_qrcode(request,codigo):
+    convidados = Convite.objects.filter(evento__codigo=codigo)
+    return render(request, 'qrcode.html', {'pessoas': convidados})
