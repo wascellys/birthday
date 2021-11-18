@@ -45,13 +45,13 @@ class Convite(models.Model):
         )
 
         codigo = self.codigo
-        data = 'https://' + ip + '/convite/'+codigo
+        data = 'https://edywascellys.pythonanywhere.com/convite/'+codigo
 
 
         qr.add_data(data)
         qr.make(fit=True)
         img = qr.make_image(fill='black', back_color='white')
-        img.save('/img/'+codigo+'.png')
+        img.save('/home/edywascellys/edywascellys.pythonanywhere.com/static/img/'+codigo+'.png')
 
         imagem = '/static/img/'+codigo+'.png'
 
