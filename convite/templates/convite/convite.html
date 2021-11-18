@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<style>
+
+</style>
+<div class="container">
+    <div class="card" id="card-gradient">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-xs-12 col-md-4">
+                    <img src="/static/img/logo4.png" class="img-responsive" style="width: 100%;height: auto;">
+                </div>
+                <div class="col-12 col-md-1"></div>
+                <div class="col-12 col-md-7 text-center">
+                    <div id="name-title">
+                        {{convidado.pessoa}}
+                    </div>
+                    <div class="convidado">
+                        Vai ter festa na selva!<br><br>
+
+                        A bicharada está se preparando para comemorar meu primeiro aniversário!<br><br>
+
+                        Quem tem memória de elefante não vai esquecer.<br>
+                        Para quem é coruja a festa começa cedo.<br>
+                        Quem tem fome de leão, vai adorar as delicias.<br>
+                        Uma coisa é certa! Vai ser o bicho, pode acreditar.<br>
+                        Para não dar zebra é só anotar:<br><br>
+
+                        Data: 04/12/2021<br>
+                        Local: RM festas<br>
+                        Hora: 19 horas
+                    </div>
+                    {% if convidado.presente %}
+                    <div id="name-title">Presença confirmada !<br>
+                    Te vejo lá.
+                    </div>
+                    {% else %}
+                        <a href="{% url 'confirmar-presenca' convidado.codigo %}" ><img id="button-confirm" src="/static/img/confirm-button2.png" class="img-responsive" ></a>
+                    {% endif %}
+
+                    <br>
+                    <br>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% endblock %}

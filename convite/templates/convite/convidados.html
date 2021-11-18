@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container">
+
+    <div class="card" id="card-gradient">
+
+        <div class="card-body">
+            <div id="name-title"> Convidados</div>
+            <div class="table-responsive">
+                <table class="table align-items-center">
+                    <thead>
+                    <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Codigo</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nome</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">QRCODE</th>
+                        <!--                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>-->
+                        <!--                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">-->
+                        <!--                            Completion-->
+                        <!--                        </th>-->
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for c in convidados %}
+                    <tr>
+                        <td>
+                            <div class="d-flex px-2">
+                                <div>
+
+                                </div>
+                                <div class="my-auto">
+                                    <h6 class="mb-0 text-xs">{{c.codigo}}</h6>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex px-12">
+                                <div>
+
+                                </div>
+                                <div class="my-auto">
+                                    <h6 class="mb-0 text-xs">{{c.pessoa}}</h6>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex px-4">
+                                <div>
+
+                                </div>
+                                <div class="my-auto">
+                                    {% if c.presente %}
+                                    <i class="fas fa-check-circle text-center" style="color:green;"></i>
+                                    {% else %}
+                                    <h6 class="mb-0 text-xs"></h6>
+                                    {% endif%}
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex px-2">
+                                <div>
+
+                                </div>
+                                <div class="my-auto">
+                                    <img src="{{c.qrcode}}" class="img-responsive" style="width: 20%;height: auto;" >
+                                </div>
+                            </div>
+                        </td>
+                        
+
+
+                        <!--                        <td class="align-middle">-->
+                        <!--                            <button class="btn btn-link text-secondary mb-0">-->
+                        <!--                                  <span class="material-icons">-->
+                        <!--                                  more_vert-->
+                        <!--                                  </span>-->
+                        <!--                            </button>-->
+                        <!--                        </td>-->
+                    </tr>
+                    {% endfor %}
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
