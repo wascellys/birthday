@@ -36,7 +36,9 @@
                     Te vejo lá.
                     </div>
                     {% else %}
-                        <a href="{% url 'confirmar-presenca' convidado.codigo %}" ><img id="button-confirm" src="/static/img/confirm-button2.png" class="img-responsive" ></a>
+                        <a href="/confirmar-presenca/{{ convidado.codigo}}" >
+                            <img id="button-confirm" src="/static/img/confirm-button2.png" class="img-responsive" >
+                        </a>
                     {% endif %}
 
                     <br>
