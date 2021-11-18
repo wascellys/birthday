@@ -45,13 +45,13 @@ class Convite(models.Model):
         )
 
         codigo = self.codigo
-        data = 'http://' + ip + ":8000/convite/"+codigo
+        data = 'https://' + ip + '/convite/'+codigo
 
 
         qr.add_data(data)
         qr.make(fit=True)
         img = qr.make_image(fill='black', back_color='white')
-        img.save('../birthday/convite/static/img/'+codigo+'.png')
+        img.save('/img/'+codigo+'.png')
 
         imagem = '/static/img/'+codigo+'.png'
 
