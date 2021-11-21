@@ -24,7 +24,7 @@ def confirmar_presenca(request, codigo):
 
 def convidados(request, codigo):
 
-    convidados = Convite.objects.filter(evento__codigo=codigo)
+    convidados = Convite.objects.filter(evento__codigo=codigo).order_by('pessoa')
     return render(request, 'convite/convidados.html',{'convidados': convidados})
 
 
