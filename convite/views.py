@@ -80,12 +80,12 @@ class GetSheetData(ViewSet):
                 mb_id = clients.get(uuid).get('id')
                 request = {
                     "id_staff": mb_id,
-                    "api_key": request.auth,
+                    "api_key": request.auth.key,
                 }
+                response = requests.get(url=url_base, params=request)
+                return Response(json.loads(response.content.decode('utf-8')))
             else:
                 return Response(data={'detail': 'missing parameters'}, status=status.HTTP_400_BAD_REQUEST)
-            response = requests.get(url=url_base, params=request)
-            return Response(json.loads(response.content.decode('utf-8')))
         except AttributeError as error:
             raise error
 
