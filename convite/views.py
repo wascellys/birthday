@@ -23,7 +23,7 @@ clients = {
     '123e4567-e89b-42d3-a456-426655440001':{'name': 'Edy', 'id': '3741088'}
 }
 
-url_base = "https://script.google.com/macros/s/AKfycbw31A1LB2x3ypGdWT90gRQQbJIPHdcu3Aib3g99sNVxvo-h4CDS-ZBswqN6u7e1-kReig/exec"
+url_base = "https://script.google.com/macros/s/AKfycbw_rDzuPT5aIbym3GARWPV2H6iV7gMNPWNvnzzMeAiVcMsWHAUjf2zWnSUWkgse_gIl4A/exec"
 
 
 def convite(request, codigo):
@@ -74,14 +74,18 @@ class GetSheetData(ViewSet):
             return Response(data={"message": "invalid key"}, status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request):
-        request = {
-            "id_staff": "3741088",
-            "api_key": request.auth,
-        }
+
+        uuid = request.query_params.get('uuid')
+        if uuid is not None:
+            mb_id = clients.get(uuid).get('id')
+            request = {
+                "id_staff": mb_id,
+                "api_key": request.auth,
+            }
         try:
             response = requests.get(url=url_base, params=request)
             return Response(json.loads(response.content.decode('utf-8')))
-        except AttributeError as error:
+        except errors.HttpError as error:
             raise error
 
 
