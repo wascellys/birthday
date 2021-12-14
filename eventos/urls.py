@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf.urls.static import static
 
-from convite.views import convite, confirmar_presenca, eventos, convidados,gerar_qrcode
+from convite.views import convite, confirmar_presenca, eventos, convidados, gerar_qrcode, GetSheetData
 from eventos import settings
+
+get_sheet_data = GetSheetData.as_view({"get": "get"})
+token = GetSheetData.as_view({"post": "token"})
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +31,8 @@ urlpatterns = [
     path('convidados/<str:codigo>', convidados, name="confirmar-presenca"),
     path('gerar_qrcode/<str:codigo>', gerar_qrcode, name="gerar_qrcode"),
     path('', eventos, name="eventos"),
+    path('api-auth/', include('rest_framework.urls')),
+    path("sheet/", get_sheet_data, name="get_data"),
+    path("token/", token, name="token"),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
