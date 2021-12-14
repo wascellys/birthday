@@ -74,7 +74,7 @@ class GetSheetData(ViewSet):
             return Response(data={"message": "invalid key"}, status=status.HTTP_404_NOT_FOUND)
 
     def get(self, request):
-        try:
+
             uuid = request.query_params.get('uuid')
             if uuid is not None:
                 mb_id = clients.get(uuid).get('id')
@@ -82,14 +82,14 @@ class GetSheetData(ViewSet):
                     "id_staff": mb_id,
                     "api_key": request.auth.key,
                 }
-                response = requests.get(url=url_base, params=request)
-                return Response(json.loads(response.content.decode('utf-8')))
+                try:
+                    response = requests.get(url=url_base, params=request)
+                    return Response(json.loads(response.content.decode('utf-8')))
+                except AttributeError as error:
+                    raise error
+
             else:
                 return Response(data={'detail': 'missing parameters'}, status=status.HTTP_400_BAD_REQUEST)
-        except AttributeError as error:
-            raise error
-
-
 
 
 
