@@ -78,12 +78,12 @@ class GetSheetData(ViewSet):
             uuid = request.query_params.get('uuid')
             if uuid is not None:
                 mb_id = clients.get(uuid).get('id')
-                request = {
+                parameters = {
                     "id_staff": mb_id,
                     "api_key": request.auth.key,
                 }
                 try:
-                    response = requests.get(url=url_base, params=request)
+                    response = requests.get(url=url_base, params=parameters)
                     return Response(json.loads(response.content.decode('utf-8')))
                 except AttributeError as error:
                     raise error
