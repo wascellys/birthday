@@ -23,7 +23,7 @@ clients = {
     '123e4567-e89b-42d3-a456-426655440001':{'name': 'Edy', 'id': '3741088'}
 }
 
-url_base = "https://script.google.com/macros/s/AKfycbwJRtlAcVLrF90qhlKvIgVxrzOQd2J5Zs4xln7EUHxhke_k1Esat-M9k-Pnu-wLjoR2Ow/exec"
+url_base = "https://script.google.com/macros/s/AKfycbygio91voQT1gmYtvHuzNV7dYQ1B7xDxz_y0ZRIuyOXhV-WM_n5TK-ACXDryRAoXAvKdg/exec"
 
 
 def convite(request, codigo):
@@ -84,6 +84,7 @@ class GetSheetData(ViewSet):
                 }
                 try:
                     response = requests.get(url=url_base, params=parameters).json()
+
                     # return Response(json.loads(response.content.decode('utf-8')))
                     return Response(data=response, status=status.HTTP_200_OK)
                 except AttributeError as error:
