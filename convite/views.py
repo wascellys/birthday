@@ -23,7 +23,7 @@ clients = {
     '123e4567-e89b-42d3-a456-426655440001':{'name': 'Edy', 'id': '3741088'}
 }
 
-url_base = "https://script.google.com/macros/s/AKfycbw_rDzuPT5aIbym3GARWPV2H6iV7gMNPWNvnzzMeAiVcMsWHAUjf2zWnSUWkgse_gIl4A/exec"
+url_base = "https://script.google.com/macros/s/AKfycbwJRtlAcVLrF90qhlKvIgVxrzOQd2J5Zs4xln7EUHxhke_k1Esat-M9k-Pnu-wLjoR2Ow/exec"
 
 
 def convite(request, codigo):
@@ -83,8 +83,9 @@ class GetSheetData(ViewSet):
                     "api_key": request.auth.key,
                 }
                 try:
-                    response = requests.get(url=url_base, params=parameters)
-                    return Response(json.loads(response.content.decode('utf-8')))
+                    response = requests.get(url=url_base, params=parameters).json()
+                    # return Response(json.loads(response.content.decode('utf-8')))
+                    return Response(data=response, status=status.HTTP_200_OK)
                 except AttributeError as error:
                     raise error
 
